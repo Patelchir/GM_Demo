@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.gm_demo"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    //Databinding Enable
+    dataBinding {
+        enabled = true
+    }
+
+    // Using Lambda Expressions
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            buildConfigField "String", "BaseURL", project.DEV_BASE_URL
+            buildConfigField "String", "LastFMApiKey", project.LAST_FM_API_KEY
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def dependancies = rootProject.ext.presentationDependencies
+
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation dependancies.appcompat
+    implementation dependancies.kotlin
+    implementation dependancies.kotlinCore
+    implementation dependancies.googlematerial
+    implementation dependancies.activityKTX
+    implementation dependancies.fragmentKTX
+    implementation dependancies.fragment
+    implementation dependancies.lifecycleExtension
+    implementation dependancies.lifecycleViewModel
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    kapt dependancies.databindingCompiler
+    implementation dependancies.constrainLayout
+    implementation dependancies.coroutinesCore
+    implementation dependancies.coroutinesAndroid
+    implementation dependancies.coroutineAdapter
+    implementation dependancies.navigationFragmnet
+    implementation dependancies.navigationUiKtx
+    implementation dependancies.googleGSOn
+    implementation dependancies.gsonConverter
+    implementation dependancies.okhttpLogging
+    implementation dependancies.okHttp
+    implementation dependancies.retrofit
+    implementation dependancies.kotlinCore
+}
