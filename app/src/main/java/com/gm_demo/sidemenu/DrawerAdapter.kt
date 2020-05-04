@@ -56,7 +56,6 @@ class DrawerAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val row = rowModels[position]
 
-
         viewHolder.txtNavigationItem.text = row.name
 
         if (row.isActive)
@@ -79,7 +78,7 @@ class DrawerAdapter(
         }
     }
 
-    override fun getItemCount() = rowModels!!.size
+    override fun getItemCount() = rowModels.size
 
 
 }

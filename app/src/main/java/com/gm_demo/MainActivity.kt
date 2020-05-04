@@ -50,7 +50,6 @@ class MainActivity : ActivityBase<ViewModelBase>() {
     }
 
     fun displayProgress(t: Boolean) {
-        // binding.loading = t
         if (t) {
             if (dialog == null)
                 dialog = Utils.progressDialog(this)
@@ -101,7 +100,6 @@ class MainActivity : ActivityBase<ViewModelBase>() {
     }
 
     override fun onBackPressed() {
-
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START))
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         else

@@ -65,6 +65,13 @@ class HomeFragment : FragmentBase<HomeViewModel, HomeFragmentBinding>() {
     }
 
     override fun initializeScreenVariables() {
+        drawerAdapter = this.context?.let { it1 ->
+            DrawerAdapter(
+                it1,
+                sideMenuList
+            )
+        }!!
+        getDataBinding().rvSubList.adapter = drawerAdapter
         setTrackAdapter()
         setLiveDataObservers()
     }
@@ -103,13 +110,6 @@ class HomeFragment : FragmentBase<HomeViewModel, HomeFragmentBinding>() {
                         (activity as MainActivity).setDrawerLayout(sideMenuList)
                         setDrawerListener()
 
-                        drawerAdapter = this.context?.let { it1 ->
-                            DrawerAdapter(
-                                it1,
-                                sideMenuList
-                            )
-                        }!!
-                        getDataBinding().rvSubList.adapter = drawerAdapter
                         drawerAdapter.setList(
                             sideMenuList
                         )
